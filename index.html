@@ -3,67 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WitChat</title>
+    <title>WitChat | Loading...</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            background-color: #0f172a;
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #0f172a; font-family: sans-serif; }
+        #loader {
+            position: fixed; inset: 0; display: flex; justify-content: center; 
+            align-items: center; flex-direction: column; background: #0f172a; 
+            color: white; z-index: 999; text-align: center;
         }
-
-        #loading-screen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff;
-            z-index: 1000;
-            transition: opacity 0.5s ease;
-            background-color: #0f172a;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #334155;
-            border-top: 5px solid #38bdf8;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: none; /* Hidden until loaded */
-        }
+        .spinner { width: 50px; height: 50px; border: 5px solid #334155; border-top: 5px solid #38bdf8; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        iframe { width: 100vw; height: 100vh; border: none; }
     </style>
 </head>
 <body>
 
-    <div id="loading-screen">
+    <div id="loader">
         <div class="spinner"></div>
-        <p>Loading WitChat...</p>
+        <p id="loadingText">Initializing...</p>
     </div>
 
-    <iframe 
-        id="chat-frame" 
-        src="https://witchat.base44.app/" 
-        onload="document.getElementById('loading-screen').style.opacity = '0'; setTimeout(() => { this.style.display = 'block'; document.getElementById('loading-screen').style.display = 'none'; }, 500);">
-    </iframe>
+    <iframe id="chatFrame" src="https://witchat.base44.app/" onload="finishLoading()"></iframe>
 
+    <script>
+        const messages = [
+            "Waking up the servers...", "Connecting to the mainframe...", "Polishing chat bubbles...", "Securing your connection...", "Syncing with the cloud...",
+            "Loading chat history...", "Calibrating algorithms...", "Brewing digital coffee...", "Assembling user interface...", "Verifying permissions...",
+            "Optimizing performance...", "Fetching latest messages...", "Connecting to chat nodes...", "Reticulating splines...", "Initializing protocols...",
+            "Preparing the chat...", "Establishing handshake...", "Loading assets...", "Almost there...", "Just a few more seconds...",
+            "Checking for updates...", "Configuring workspace...", "Loading your profile...", "Downloading emojis...", "Sorting conversations...",
+            "Adjusting contrast...", "Warming up pixels...", "Firing up engines...", "Loading dependencies...", "Syncing databases...",
+            "Encrypting data...", "Opening communication lines...", "Scanning for activity...", "Retrieving chat logs...", "Updating themes...",
+            "Finalizing connection...", "Setting up rooms...", "Preparing notifications...", "Loading style sheets...", "Configuring websocket...",
+            "Establishing link...", "Buffering data...", "Fetching user list...", "Synchronizing clocks...", "Loading components...",
+            "Rendering elements...", "Allocating resources...", "Starting services...", "Configuring session...", "Waiting for response...",
+            "Checking status...", "Verifying integrity...", "Refreshing cache...", "Preparing storage...", "Cleaning up temporary files...",
+            "Initializing modules...", "Loading icons...", "Setting up event listeners...", "Parsing data...", "Calculating latency...",
+            "Establishing tunnel...", "Connecting to API...", "Setting up security...", "Loading plugins...", "Preparing environment...",
+            "Initializing graphics...", "Building views...", "Readying chat...", "Synchronizing state...", "Loading configuration...",
+            "Optimizing assets...", "Checking connection...", "Preparing workspace...", "Establishing stream...", "Buffering resources...",
+            "Loading styles...", "Verifying account...", "Fetching messages...", "Initializing system...", "Rendering UI...",
+            "Loading scripts...", "Configuring layout...", "Setting up database...", "Connecting server...", "Preparing for takeoff...",
+            "Almost ready...", "Connecting wires...", "Loading sounds...", "Setting colors...", "Final checks...",
+            "Updating UI...", "Syncing data...", "Verifying version...", "Initializing app...", "Establishing secure connection...",
+            "Loading chat modules...", "Preparing interface...", "Fetching content...", "Setting up session...", "Finalizing setup..."
+        ];
+
+        const loadingText = document.getElementById('loadingText');
+        const loader = document.getElementById('loader');
+
+        // Randomized interval for message switching (every 2 seconds)
+        setInterval(() => {
+            loadingText.textContent = messages[Math.floor(Math.random() * messages.length)];
+        }, 2000);
+
+        // Random delay between 10 and 20 seconds (10000ms - 20000ms)
+        const randomDelay = Math.floor(Math.random() * (20000 - 10000 + 1) + 10000);
+
+        function finishLoading() {
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, randomDelay);
+        }
+    </script>
 </body>
 </html>

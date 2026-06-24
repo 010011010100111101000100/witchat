@@ -3,67 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WitChat | Loading...</title>
+    <title>Welcome to WitChat</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
-            background-color: #0f172a; /* Dark chat background color */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        #loading-screen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            background-color: #0f172a;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: #ffffff;
-            z-index: 1000;
-            transition: opacity 0.5s ease;
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #334155;
-            border-top: 5px solid #38bdf8;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: #1e293b;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        h1 { margin-bottom: 1rem; color: #38bdf8; }
+        p { margin-bottom: 2rem; opacity: 0.8; }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background 0.3s;
         }
 
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: none;
-        }
+        .btn:hover { background-color: #bae6fd; }
     </style>
 </head>
 <body>
 
-    <div id="loading-screen">
-        <div class="spinner"></div>
-        <p>Connecting to WitChat...</p>
+    <div class="container">
+        <h1>WitChat</h1>
+        <p>Click the button below to open the chat application.</p>
+        <a href="https://witchat.base44.app/" class="btn" target="_blank" rel="noopener noreferrer">Launch WitChat</a>
     </div>
-
-    <iframe 
-        id="chat-frame" 
-        src="https://witchat.base44.app/" 
-        onload="document.getElementById('loading-screen').style.opacity = '0'; setTimeout(() => { this.style.display = 'block'; document.getElementById('loading-screen').style.display = 'none'; }, 500);">
-    </iframe>
 
 </body>
 </html>
